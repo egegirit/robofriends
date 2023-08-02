@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CardList from "../components/CardList";
 import SearchBox from "../components/SearchBox";
 import Scroll from "../components/Scroll";
+import ErrorBoundry from "../components/ErrorBoundry";
 import "./App.css";
 
 /* To be able to use a state, App is defined as a class */
@@ -51,7 +52,9 @@ class App extends Component {
           <SearchBox searchChange={this.onSearchChange} />
           {/* Filtered robot list will be passed as card list prop */}
           <Scroll>
-            <CardList robots={filteredRobots} />
+            <ErrorBoundry>
+              <CardList robots={filteredRobots} />
+            </ErrorBoundry>
           </Scroll>
         </div>
       );
